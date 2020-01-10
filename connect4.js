@@ -19,11 +19,9 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
-  
   for (let i = 0; i < WIDTH; i++){
     board.push([]);
   }
-  
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -35,7 +33,6 @@ function makeHtmlBoard() {
   let top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
-
   for (let x = 0; x < WIDTH; x++) {
     let headCell = document.createElement("td");
     headCell.setAttribute("id", x);
@@ -76,8 +73,8 @@ function placeInTable(y, x) {
   piece.classList.add("piece");
   piece.classList.add(`p${currPlayer}`);
 
-  let pixelsFromLeft = x * 56 +2;
-  let pixelsFromTop = (y + 1) * 56 + 2;
+  let pixelsFromLeft = x * 56 +4;
+  let pixelsFromTop = (y + 1) * 56 + 4;
   piece.style.left = `${pixelsFromLeft}px`;
 
   piece.style.setProperty('--fall-distance', `${pixelsFromTop}px`);
@@ -129,7 +126,7 @@ function handleClick(evt) {
     currPlayer = ((currPlayer === 1) ? 2 : 1);
 
     clicksDisabled = false;
-  }, 100);
+  }, Math.max(100,(y + 1) * 200)); //Prevents a person from clicking while the animation is running.
 
 }
 
