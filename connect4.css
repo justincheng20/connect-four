@@ -25,7 +25,7 @@
   top: 0;  /* maybe 2 ? */
   /* left: js determines */
   animation-duration: var(--fall-duration);
-
+  z-index: -1;
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
@@ -52,13 +52,6 @@ table {
   background-color: gold;
 }
 
-/* .falling {
-  transform: translateY(0px);
-  transition: transform 2s;
-} */
-
-
-
 .falling {
   /* animation: dropping 1s forwards linear; */
   /* animation-duration: 1s; */
@@ -69,7 +62,6 @@ table {
   animation-fill-mode: forwards;
   animation-play-state: running;
   animation-name: dropping;
-  
 }
 
 @keyframes dropping {
