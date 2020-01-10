@@ -131,7 +131,7 @@ function handleClick(evt) {
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
-
+// Bug Fix Note: Changed y < to y <= to accomodate for the fact that y starts for 0 instead of 1.
 function checkForWin() {
   function _win(cells) {
     // Check four cells to see if they're all color of current player
@@ -141,7 +141,7 @@ function checkForWin() {
     return cells.every(
       ([y, x]) =>
         y >= 0 &&
-        y < HEIGHT &&
+        y <= HEIGHT &&
         x >= 0 &&
         x < WIDTH &&
         board[y][x] === currPlayer
@@ -150,7 +150,7 @@ function checkForWin() {
 
   // TODO: read and understand this code. Add comments to help you.
   // This function creates arrays for every single possible 4-space combination of pieces in every direction. If any one of these 4 is true, we return true. 
-  for (let y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y <= HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
