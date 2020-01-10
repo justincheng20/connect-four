@@ -67,10 +67,22 @@ function findSpotForCol(x) {
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
   let id = `${y}-${x}`;
-  // let cell = document.querySelector("#0-6");
-  let cell = document.getElementById(id);
-  cell.classList.add("piece");
-  cell.classList.add(`p${currPlayer}`);
+
+  // create div just for piece and append to columnTop
+  let piece = document.createElement("div");
+  let columnTop = document.getElementById("column-top");
+  columnTop.appendChild(piece);
+
+  piece.classList.add("piece");
+  piece.classList.add(`p${currPlayer}`);
+
+  let pixelsFromLeft = x * 56 +2;
+  let pixelsFromTop = (y + 1) * 56 + 2;
+  piece.style.left = `${pixelsFromLeft}px`;
+
+  piece.style.setProperty('--fall-distance', `${pixelsFromTop}px`);
+  piece.style.setProperty('--fall-duration', `${(y +1) * .2}s`)
+  piece.classList.add("falling");
 }
 
 /** endGame: announce game end */
