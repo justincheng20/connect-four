@@ -145,12 +145,11 @@ class Game {
     // place piece in board and add to HTML table
     this.board[y][x] = this.currPlayer;
     this.placeInTable(y, x);
-
+    this.gameState = false;
     // check for win
     setTimeout(function(){
     if (this.checkForWin()) {
       this.gameState = false;
-      console.log(board);
       return this.endGame(`Player ${this.currPlayer} won!`);
     }
 
